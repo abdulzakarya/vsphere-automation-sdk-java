@@ -309,7 +309,7 @@ public abstract class SamplesAbstractBase {
                 vapiAuthHelper.loginByUsernameAndPassword(
                     this.server, this.username, this.password, httpConfig);
         this.vimAuthHelper.loginByUsernameAndPassword(
-                    this.server, this.username, this.password);
+                    this.server, this.username, this.password, this.skipServerVerification);
     }
 
     /**

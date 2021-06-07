@@ -14,6 +14,7 @@ package vmware.samples.common.authentication;
 
 import java.util.Map;
 
+import javax.net.ssl.TrustManager;
 import javax.xml.ws.BindingProvider;
 
 import com.vmware.vim25.InvalidLocaleFaultMsg;
@@ -23,6 +24,10 @@ import com.vmware.vim25.RuntimeFaultFaultMsg;
 import com.vmware.vim25.ServiceContent;
 import com.vmware.vim25.VimPortType;
 import com.vmware.vim25.VimService;
+import org.apache.cxf.configuration.jsse.TLSClientParameters;
+import org.apache.cxf.endpoint.Client;
+import org.apache.cxf.frontend.ClientProxy;
+import org.apache.cxf.transport.http.HTTPConduit;
 
 /**
  * Vim api helper class which provides methods for login/logout using
@@ -53,15 +58,37 @@ public class VimAuthenticationHelper {
         SVC_INST_REF.setType("ServiceInstance");
         SVC_INST_REF.setValue("ServiceInstance");
     }
+
+    /**
+     * (Service local) disabling of the SSL certificate verification in a CXF context.
+     *
+     * @param port the service
+     * @return Successful execution returns {@code true}; otherwise
+     *    {@code false}.
+     */
+    public static boolean ignoreSslCertCXF(BindingProvider port) {
+        Client client = ClientProxy.getClient(port);
+        HTTPConduit conduit = (HTTPConduit) client.getConduit();
+        TLSClientParameters params = conduit.getTlsClientParameters();
+        if (params == null) {
+            params = new TLSClientParameters();
+            conduit.setTlsClientParameters(params);
+        }
+        params.setTrustManagers(new TrustManager[]{new TrustAllTrustManager()});
+        params.setDisableCNCheck(true);
+        return true;
+    }
+
     /**
      * Creates a session with the server using username and password
      *
      * @param server hostname or ip address of the server to log in to
      * @param username username for login
      * @param password password for login
+     * @param skipServerVerification
      */
     public void loginByUsernameAndPassword(
-        String server, String username, String password) {
+            String server, String username, String password, boolean skipServerVerification) {
         try {
             String vimSdkUrl = "https://" + server + VIM_PATH;
 
@@ -75,6 +102,13 @@ public class VimAuthenticationHelper {
             this.vimPort = vimService.getVimPort();
             Map<String, Object> ctxt =
                     ((BindingProvider) vimPort).getRequestContext();
+
+            /*
+             * ignore SSL certificate verification, CXF style
+             */
+            if (skipServerVerification) {
+                ignoreSslCertCXF((BindingProvider) vimPort);
+            }
 
              /*
               * Store the Server URL in the request context and specify true
