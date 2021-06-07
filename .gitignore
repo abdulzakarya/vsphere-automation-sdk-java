@@ -1,7 +1,9 @@
 /target/
+/.idea/
 *.classpath
 *.project
 *.prefs
+*.iml
 lib/*sources*.jar
 .gradle/
 build/
