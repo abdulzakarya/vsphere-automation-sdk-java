@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.eaton.pqsoft.emc4j.thirdparty.vmware</groupId>
+        <artifactId>vsphere-automation-sdk-osgi</artifactId>
+        <version>${revision}</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>vsphere-automation-sdk-assembly</artifactId>
+    <version>${revision}</version>
+    <packaging>karaf-assembly</packaging>
+    <name>vSphere :: Automation :: SDK :: assembly</name>
+    <description>vSphere Automation SDK Assembly</description>
+
+    <dependencies>
+        <!-- Karaf framework and features -->
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>framework</artifactId>
+            <version>${karaf.version}</version>
+            <type>kar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>standard</artifactId>
+            <version>${karaf.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.karaf.features</groupId>
+            <artifactId>enterprise</artifactId>
+            <version>${karaf.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.cxf.karaf</groupId>
+            <artifactId>apache-cxf</artifactId>
+            <version>${cxf.version}</version>
+            <classifier>features</classifier>
+            <type>xml</type>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>vsphereautomation-client-sdk-bundle</artifactId>
+            <version>${vsphereautomationsdk.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <resources>
+            <!-- Direct resources. -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+            <!-- Filtered resources. -->
+            <resource>
+                <directory>src/main/filtered-resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>resources</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.karaf.tooling</groupId>
+                <artifactId>karaf-maven-plugin</artifactId>
+                <version>${karaf.version}</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>install-kar</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>assembly</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>package</id>
+                        <goals>
+                            <goal>archive</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archiveTarGz>true</archiveTarGz>
+                    <archiveZip>false</archiveZip>
+                    <!--karafVersion>${karaf.version}</karafVersion-->
+                    <generateConsistencyReport>${project.build.directory}</generateConsistencyReport>
+                    <consistencyReportProjectName>${project.name}</consistencyReportProjectName>
+                    <finalName>${project.name}</finalName>
+                    <startupFeatures>
+                        <feature>eventadmin/${karaf.version}</feature>
+                    </startupFeatures>
+                    <bootFeatures>
+                        <feature>standard/${karaf.version}</feature>
+                        <feature>cxf-jaxws</feature>
+                        <feature>cxf-specs</feature>
+                        <feature>cxf-jackson</feature>
+                        <feature>cxf-http-async</feature>
+                    </bootFeatures>
+                    <bootBundles>
+                        <bundle>mvn:${project.groupId}/vsphereautomation-client-sdk-bundle/${vsphereautomationsdk.version}</bundle>
+                    </bootBundles>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
