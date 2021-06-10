@@ -63,10 +63,8 @@ public class VimAuthenticationHelper {
      * (Service local) disabling of the SSL certificate verification in a CXF context.
      *
      * @param port the service
-     * @return Successful execution returns {@code true}; otherwise
-     *    {@code false}.
      */
-    public static boolean ignoreSslCertCXF(BindingProvider port) {
+    public static void disableSslVerificationCXF(BindingProvider port) {
         Client client = ClientProxy.getClient(port);
         HTTPConduit conduit = (HTTPConduit) client.getConduit();
         TLSClientParameters params = conduit.getTlsClientParameters();
@@ -76,7 +74,6 @@ public class VimAuthenticationHelper {
         }
         params.setTrustManagers(new TrustManager[]{new TrustAllTrustManager()});
         params.setDisableCNCheck(true);
-        return true;
     }
 
     /**
@@ -107,7 +104,7 @@ public class VimAuthenticationHelper {
              * ignore SSL certificate verification, CXF style
              */
             if (skipServerVerification) {
-                ignoreSslCertCXF((BindingProvider) vimPort);
+                disableSslVerificationCXF((BindingProvider) vimPort);
             }
 
              /*
