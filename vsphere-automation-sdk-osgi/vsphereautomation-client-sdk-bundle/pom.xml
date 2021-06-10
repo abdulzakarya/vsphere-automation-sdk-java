@@ -102,6 +102,12 @@
                         is different from the one in cxf-spec, forcing the lower version -->
                         <Import-Package>
                             javax.xml.ws;version="[2.2,3)",
+
+                            !org.apache.catalina.*,
+                            !org.apache.coyote.*,
+                            !org.apache.tomcat.*,
+                            !org.ini4j.*,
+                            !org.reactivestreams.*
                             *
                         </Import-Package>
                         <!-- vstats ?? oauth2 ?? -->
