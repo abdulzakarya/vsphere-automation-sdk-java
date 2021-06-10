@@ -103,11 +103,11 @@
                         <Import-Package>
                             javax.xml.ws;version="[2.2,3)",
 
-                            !org.apache.catalina.*,
-                            !org.apache.coyote.*,
-                            !org.apache.tomcat.*,
-                            !org.ini4j.*,
-                            !org.reactivestreams.*
+                            org.apache.catalina.*;resolution=optional,
+                            org.apache.coyote.*;resolution=optional,
+                            org.apache.tomcat.*;resolution=optional,
+                            org.ini4j.*;resolution=optional,
+                            org.reactivestreams.*;resolution=optional,
                             *
                         </Import-Package>
                         <!-- vstats ?? oauth2 ?? -->
