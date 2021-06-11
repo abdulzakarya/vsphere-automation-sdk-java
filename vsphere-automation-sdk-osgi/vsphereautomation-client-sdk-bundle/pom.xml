@@ -39,6 +39,21 @@
             <scope>system</scope>
             <systemPath>${basedir}/../../lib/vapi-authentication-${vapi.version}.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>com.vmware.vapi</groupId>
+            <artifactId>vapi-vmc-sdk</artifactId>
+            <version>${vapi.version}</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../../lib/vapi-vmc-sdk-${vapi.version}.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.vmware.vapi</groupId>
+            <artifactId>vapi-samltoken</artifactId>
+            <version>${vapi.version}</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../../lib/vapi-samltoken-${vapi.version}.jar</systemPath>
+        </dependency>
+
 
         <!-- direct dependencies -->
         <dependency>
@@ -106,6 +121,8 @@
                         <Embed-Dependency>vsphereautomation-client-sdk</Embed-Dependency>
                         <Embed-Dependency>vapi-runtime</Embed-Dependency>
                         <Embed-Dependency>vapi-authentication</Embed-Dependency>
+                        <Embed-Dependency>vapi-vmc-sdk</Embed-Dependency>
+                        <Embed-Dependency>vapi-samltoken</Embed-Dependency>
 
                         <!-- cxf bugfix: jaxws-api version used in cxf-rt-frontend-jaxws
                         is different from the one in cxf-spec, forcing the lower version -->
@@ -130,6 +147,12 @@
                             com.vmware.vapi;
                             com.vmware.oauth2;
                             com.vmware.vcenter;
+
+                            com.vmware.vapi.bindings;
+                            com.vmware.vapi.client;
+                            com.vmware.vapi.core;
+                            com.vmware.vapi.protocol;
+                            com.vmware.vapi.cis.authn;
                         </Export-Package>
                     </instructions>
                 </configuration>
