@@ -32,6 +32,13 @@
             <scope>system</scope>
             <systemPath>${basedir}/../../lib/vapi-runtime-${vapi.version}.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>com.vmware.vapi</groupId>
+            <artifactId>vapi-authentication</artifactId>
+            <version>${vapi.version}</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/../../lib/vapi-authentication-${vapi.version}.jar</systemPath>
+        </dependency>
 
         <!-- direct dependencies -->
         <dependency>
@@ -98,6 +105,8 @@
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Embed-Dependency>vsphereautomation-client-sdk</Embed-Dependency>
                         <Embed-Dependency>vapi-runtime</Embed-Dependency>
+                        <Embed-Dependency>vapi-authentication</Embed-Dependency>
+
                         <!-- cxf bugfix: jaxws-api version used in cxf-rt-frontend-jaxws
                         is different from the one in cxf-spec, forcing the lower version -->
                         <Import-Package>
