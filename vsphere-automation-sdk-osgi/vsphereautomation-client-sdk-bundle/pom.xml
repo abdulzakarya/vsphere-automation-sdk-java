@@ -106,8 +106,10 @@
                             !org.apache.catalina.*,
                             !org.apache.coyote.*,
                             !org.apache.tomcat.*,
-                            !org.ini4j.*,
                             !org.reactivestreams.*,
+                            !org.springframework.*,
+                            !org.ini4j.*,
+
                             *
                         </Import-Package>
                         <!-- vstats ?? oauth2 ?? -->
