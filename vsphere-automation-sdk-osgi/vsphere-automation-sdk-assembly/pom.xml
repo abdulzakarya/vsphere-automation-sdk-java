@@ -128,6 +128,7 @@
                     </bootFeatures>
                     <bootBundles>
                         <bundle>mvn:${project.groupId}/vsphereautomation-client-sdk-bundle/${vsphereautomationsdk.version}</bundle>
+                        <bundle>mvn:${project.groupId}/vsphere-automation-sdk-commands/${revision}</bundle>
                     </bootBundles>
                 </configuration>
             </plugin>

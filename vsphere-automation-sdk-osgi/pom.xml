@@ -30,6 +30,7 @@
     <!-- List of submodules. -->
     <modules>
         <module>vsphereautomation-client-sdk-bundle</module>
+        <module>vsphere-automation-sdk-commands</module>
         <module>vsphere-automation-sdk-assembly</module>
     </modules>
 
