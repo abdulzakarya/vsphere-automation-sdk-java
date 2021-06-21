@@ -118,11 +118,13 @@
                 <configuration>
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-                        <Embed-Dependency>vsphereautomation-client-sdk</Embed-Dependency>
-                        <Embed-Dependency>vapi-runtime</Embed-Dependency>
-                        <Embed-Dependency>vapi-authentication</Embed-Dependency>
-                        <Embed-Dependency>vapi-vmc-sdk</Embed-Dependency>
-                        <Embed-Dependency>vapi-samltoken</Embed-Dependency>
+                        <Embed-Dependency>
+                            vsphereautomation-client-sdk,
+                            vapi-runtime,
+                            vapi-authentication,
+                            vapi-vmc-sdk,
+                            vapi-samltoken
+                        </Embed-Dependency>
 
                         <!-- cxf bugfix: jaxws-api version used in cxf-rt-frontend-jaxws
                         is different from the one in cxf-spec, forcing the lower version -->
@@ -140,19 +142,22 @@
                         </Import-Package>
                         <!-- vstats ?? oauth2 ?? -->
                         <Export-Package>
-                            com.vmware.appliance;
-                            com.vmware.cis;
-                            com.vmware.content;
-                            com.vmware.esx;
-                            com.vmware.vapi;
-                            com.vmware.oauth2;
-                            com.vmware.vcenter;
+                            com.vmware.appliance,
+                            com.vmware.cis,
+                            com.vmware.content,
+                            com.vmware.esx,
+                            com.vmware.vapi,
+                            com.vmware.oauth2,
+                            com.vmware.vcenter,
 
-                            com.vmware.vapi.bindings;
-                            com.vmware.vapi.client;
-                            com.vmware.vapi.core;
-                            com.vmware.vapi.protocol;
-                            com.vmware.vapi.cis.authn;
+                            com.vmware.vapi.bindings,
+                            com.vmware.vapi.client,
+                            com.vmware.vapi.core,
+                            com.vmware.vapi.protocol,
+                            com.vmware.vapi.cis,
+                            com.vmware.vapi.cis.authn,
+
+                            *
                         </Export-Package>
                     </instructions>
                 </configuration>
