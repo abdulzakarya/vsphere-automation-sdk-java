@@ -156,8 +156,6 @@
                             com.vmware.vapi.protocol,
                             com.vmware.vapi.cis,
                             com.vmware.vapi.cis.authn,
-
-                            *
                         </Export-Package>
                     </instructions>
                 </configuration>
