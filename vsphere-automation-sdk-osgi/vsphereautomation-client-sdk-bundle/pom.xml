@@ -119,13 +119,15 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Embed-Dependency>
-                            vsphereautomation-client-sdk,
-                            vapi-runtime,
-                            vapi-authentication,
-                            vapi-vmc-sdk,
-                            vapi-samltoken
+                            vsphereautomation-client-sdk;inline=true,
+                            vapi-runtime;inline=true,
+                            vapi-authentication;inline=true,
+                            vapi-vmc-sdk;inline=true,
+                            vapi-samltoken;inline=true
                         </Embed-Dependency>
 
+                        <Embed-Transitive>true</Embed-Transitive>
+                        <DynamicImport-Package>*</DynamicImport-Package>
                         <!-- cxf bugfix: jaxws-api version used in cxf-rt-frontend-jaxws
                         is different from the one in cxf-spec, forcing the lower version -->
                         <Import-Package>
