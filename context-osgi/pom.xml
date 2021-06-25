@@ -2,40 +2,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.eaton.pqsoft.emc4j.thirdparty.vmware</groupId>
-    <artifactId>vsphere-automation-sdk-osgi</artifactId>
+    <groupId>com.eaton.pqsoft.emc4j.thirdparty</groupId>
+    <artifactId>context-osgi</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
-    <name>vSphere :: Automation :: SDK :: OSGi</name>
+    <name>Context :: OSGi</name>
 
     <properties>
-        <revision>1.0.0</revision>
-
-        <!-- Dependencies properties -->
-        <vsphereautomationsdk.version>3.6.0</vsphereautomationsdk.version>
-        <vapi.version>2.25.0</vapi.version>
-        <jackson2.version>2.10.0</jackson2.version>
-        <httpclient.version>4.5.10</httpclient.version>
-        <httpasyncclient.version>4.1.4</httpasyncclient.version>
-        <commons-lang3.version>3.9</commons-lang3.version>
+        <revision>1.0.0-SNAPSHOT</revision>
 
         <osgi.version>6.0.0</osgi.version>
         <karaf.version>4.2.11</karaf.version>
         <cxf.version>3.3.7</cxf.version>
         <junit.version>4.12</junit.version>
-        <!-- Project dependencies-->
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <!-- List of submodules. -->
     <modules>
-        <module>vsphereautomation-client-sdk-bundle</module>
-        <module>vsphere-automation-sdk-commands</module>
-        <module>vsphere-automation-sdk-assembly</module>
+        <module>commands</module>
+        <module>assembly</module>
     </modules>
 
-    <!-- All common hardened dependencies. -->
-    <!-- All these depenencies are considered provided by Eaton's packaged Karaf platform. -->
     <dependencies>
         <!-- OSGI R6 -->
         <dependency>
@@ -82,18 +70,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <distributionManagement>
-        <repository>
-            <id>libs-release-local</id>
-            <name>Artifactory depot libs release</name>
-            <url>http://artifactory.mbt.lab.etn.com/artifactory/libs-release-local</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots-local</id>
-            <name>Artifactory depot libs snapshot</name>
-            <url>http://artifactory.mbt.lab.etn.com/artifactory/libs-snapshot-local</url>
-        </snapshotRepository>
-    </distributionManagement>
 
 </project>

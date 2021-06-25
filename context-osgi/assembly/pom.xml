@@ -3,17 +3,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.eaton.pqsoft.emc4j.thirdparty.vmware</groupId>
-        <artifactId>vsphere-automation-sdk-osgi</artifactId>
+        <groupId>com.eaton.pqsoft.emc4j.thirdparty</groupId>
+        <artifactId>context-osgi</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>vsphere-automation-sdk-assembly</artifactId>
+    <artifactId>context-osgi-assembly</artifactId>
     <version>${revision}</version>
     <packaging>karaf-assembly</packaging>
-    <name>vSphere :: Automation :: SDK :: assembly</name>
-    <description>vSphere Automation SDK Assembly</description>
+    <name>Context :: OSGi :: assembly</name>
 
     <dependencies>
         <!-- Karaf framework and features -->
@@ -44,12 +43,6 @@
             <version>${cxf.version}</version>
             <classifier>features</classifier>
             <type>xml</type>
-        </dependency>
-
-        <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>vsphereautomation-client-sdk-bundle</artifactId>
-            <version>${vsphereautomationsdk.version}</version>
         </dependency>
 
     </dependencies>
@@ -127,8 +120,9 @@
                         <feature>cxf-http-async</feature>
                     </bootFeatures>
                     <bootBundles>
-                        <bundle>mvn:${project.groupId}/vsphereautomation-client-sdk-bundle/${vsphereautomationsdk.version}</bundle>
-                        <bundle>mvn:${project.groupId}/vsphere-automation-sdk-commands/${revision}</bundle>
+                        <bundle>mvn:commons-lang/commons-lang/2.6</bundle>
+                        <bundle>mvn:com.eaton.pqsoft.emc4j.thirdparty.vmware/vsphere-automation-sdk-bundle/7.0.2.0</bundle>
+                        <bundle>mvn:${project.groupId}/context-osgi-commands/${revision}</bundle>
                     </bootBundles>
                 </configuration>
             </plugin>

@@ -3,23 +3,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.eaton.pqsoft.emc4j.thirdparty.vmware</groupId>
-        <artifactId>vsphere-automation-sdk-osgi</artifactId>
+        <groupId>com.eaton.pqsoft.emc4j.thirdparty</groupId>
+        <artifactId>context-osgi</artifactId>
         <version>${revision}</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>vsphere-automation-sdk-commands</artifactId>
+    <artifactId>context-osgi-commands</artifactId>
     <version>${revision}</version>
     <packaging>bundle</packaging>
-    <name>vSphere :: Automation :: SDK :: Commands</name>
-    <description>vSphere Automation Client SDK Karaf commands</description>
+    <name>Context :: OSGi :: Commands</name>
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>vsphereautomation-client-sdk-bundle</artifactId>
-            <version>${vsphereautomationsdk.version}</version>
+            <groupId>com.eaton.pqsoft.emc4j.thirdparty.vmware</groupId>
+            <artifactId>vsphere-automation-sdk-bundle</artifactId>
+            <version>7.0.2.0</version>
         </dependency>
 
         <dependency>
