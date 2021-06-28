@@ -22,6 +22,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.vmware</groupId>
+            <artifactId>vsphere-samples-nodeps</artifactId>
+            <version>7.0.2.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.karaf.shell</groupId>
             <artifactId>org.apache.karaf.shell.console</artifactId>
             <version>${karaf.version}</version>
@@ -52,6 +58,12 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Karaf-Commands>*</Karaf-Commands>
+                        <Embed-Dependency>vsphere-samples-nodeps</Embed-Dependency>
+                        <Embed-Transitive>true</Embed-Transitive>
+                        <Import-Package>
+                            !com.ibm.uvm.tools,
+                            *
+                        </Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
