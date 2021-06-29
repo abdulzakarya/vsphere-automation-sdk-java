@@ -276,7 +276,14 @@
                             com.vmware.content.library.*,
                             com.vmware.cis.task,
                             com.vmware.authorization.grant,
-                            com.vmware.authorization.id
+                            com.vmware.authorization.id,
+
+                            <!-- fix osgi wiring with samples -->
+                            com.rsa.names.*,
+
+                            oasis.names.*,
+                            org.oasis_open.*,
+                            org.w3.*,
                         </Export-Package>
                     </instructions>
                 </configuration>
