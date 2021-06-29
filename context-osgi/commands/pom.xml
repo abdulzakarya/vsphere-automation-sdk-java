@@ -84,6 +84,15 @@
                     <instructions>
                         <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
                         <Karaf-Commands>*</Karaf-Commands>
+                        <!-- cxf bugfix: jaxws-api version used in cxf-rt-frontend-jaxws
+                        is different from the one in cxf-spec, forcing the lower version -->
+                        <Import-Package>
+                            javax.xml.ws;version="[2.2,3)",
+                            javax.xml.ws.wsaddressing;version="[2.2,3)",
+                            javax.xml.ws.handler;version="[2.2,3)",
+                            javax.xml.ws.handler.soap;version="[2.2,3)",
+                            *
+                        </Import-Package>
                     </instructions>
                 </configuration>
             </plugin>
