@@ -27,10 +27,16 @@
             <version>${karaf.version}</version>
         </dependency>
 
+        <!-- compilation and osgi fixes -->
         <dependency>
             <groupId>org.apache.cxf</groupId>
             <artifactId>cxf-rt-transports-http</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.soap</groupId>
+            <artifactId>javax.xml.soap-api</artifactId>
+            <version>1.4.0</version>
         </dependency>
     </dependencies>
 

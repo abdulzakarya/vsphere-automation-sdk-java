@@ -246,12 +246,6 @@
 
                             *
                         </Import-Package>
-                        <!--
-                        packages we did not export, for now..
-                            com.vmware.vcenter
-                            com.vmware.nsx_vmc_app
-                            com.vmware.esx
-                        -->
                         <Export-Package>
                             com.vmware.vstats,
                             com.vmware.vsphereautomation.lookup,
@@ -280,7 +274,13 @@
 
                             <!-- fix osgi wiring with samples -->
                             com.rsa.names.*,
+                            com.vmware.authorization.*,
+                            com.vmware.cis.*,
+                            com.vmware.nsx_vmc_app.*,
+                            com.vmware.vcenter.*,
+                            com.vmware.esx.*,
 
+                            com.vmware.oauth2.*,
                             oasis.names.*,
                             org.oasis_open.*,
                             org.w3.*,
