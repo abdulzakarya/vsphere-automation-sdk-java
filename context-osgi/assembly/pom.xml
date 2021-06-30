@@ -118,9 +118,10 @@
                         <feature>cxf-jackson</feature>
                         <feature>cxf-ws-security</feature>
                         <feature>cxf-http-async</feature>
+                        <feature>wrap</feature>
                     </bootFeatures>
                     <bootBundles>
-                        <bundle>mvn:commons-lang/commons-lang/2.6</bundle>
+                        <bundle>wrap:mvn:commons-lang/commons-lang/2.6</bundle>
                         <bundle>mvn:javax.xml.soap/javax.xml.soap-api/1.4.0</bundle>
                         <bundle>mvn:com.eaton.pqsoft.emc4j.thirdparty.vmware/vsphere-automation-sdk-bundle/7.0.2.0</bundle>
                         <bundle>mvn:${project.groupId}/context-osgi-commands/${revision}</bundle>
